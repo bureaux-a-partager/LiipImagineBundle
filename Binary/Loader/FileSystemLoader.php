@@ -63,10 +63,6 @@ class FileSystemLoader implements LoaderInterface
             throw new NotLoadableException(sprintf('Source image not resolvable "%s"', $path));
         }
 
-        if (0 !== strpos($absolutePath, $this->rootPath)) {
-            throw new NotLoadableException(sprintf('Source image invalid "%s" as it is outside of the defined root path', $absolutePath));
-        }
-
         $mimeType = $this->mimeTypeGuesser->guess($absolutePath);
 
         return new FileBinary(
